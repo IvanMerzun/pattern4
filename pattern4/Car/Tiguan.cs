@@ -1,4 +1,6 @@
-﻿using System;
+﻿using pattern4.Factory;
+using pattern4.Parts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +12,17 @@ namespace pattern4.Car
     {
         private string _name;
         private string _body;
-        private string _engine = "4.4 Turbo";
-        private string _wheels = "\"17";
 
-        public Tiguan()
+        private Engine _engine;
+        private Wheels _wheels;
+
+        private CarPartsFactory _partsFactory;
+
+        public Tiguan(CarPartsFactory partsFactory)
         {
             _name = "Tiguan";
             _body = "Crossover";
+            _partsFactory = partsFactory;
 
         }
 
@@ -26,12 +32,12 @@ namespace pattern4.Car
         }
         public void AssemblyWheels()
         {
-            Console.WriteLine("Установка колес {0}", _wheels);
+            _wheels = _partsFactory.GetWheels();
         }
 
         public void AssemblyEngine()
         {
-            Console.WriteLine("Установка движка {0}", _engine);
+            _engine = _partsFactory.GetEngine();
         }
 
         public string GetName()

@@ -11,7 +11,7 @@ namespace pattern4.Factory
     {
         protected override ICar GetCar()
         {
-            return new Golf();
+            return new Golf(new CarPartsFactoryTurkey());
         }
     }
 }

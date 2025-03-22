@@ -11,7 +11,7 @@ namespace pattern4.Factory
     {
         protected override ICar GetCar()
         {
-            return new Tiguan();
+            return new Tiguan(new CarPartsFactoryRussia());
         }
     }
 }
